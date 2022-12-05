@@ -7,7 +7,6 @@ namespace Facebook\BusinessExtension\Helper;
 
 use Facebook\BusinessExtension\Logger\Logger;
 use Facebook\BusinessExtension\Model\ConfigFactory;
-use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollection;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
@@ -599,35 +598,5 @@ class FBEHelper extends AbstractHelper
         return null;
     }
 
-    /**
-     * Generates a map of the form : 4 => "Root > Mens > Shoes"
-     *
-     * @return array
-     */
-    public function generateCategoryNameMap()
-    {
-        $categories = $this->getObject(CategoryCollection::class)
-            ->addAttributeToSelect('name')
-            ->addAttributeToSelect('path')
-            ->addAttributeToSelect('is_active')
-            ->addAttributeToFilter('is_active', 1);
-        $name = [];
-        $breadcrumb = [];
-        foreach ($categories as $category) {
-            $entityId = $category->getId();
-            $name[$entityId] = $category->getName();
-            $breadcrumb[$entityId] = $category->getPath();
-        }
-        // Converts the product category paths to human readable form.
-        // e.g.  "1/2/3" => "Root > Mens > Shoes"
-        foreach ($name as $id => $value) {
-            $breadcrumb[$id] = implode(" > ", array_filter(array_map(
-                function ($innerId) use (&$name) {
-                    return isset($name[$innerId]) ? $name[$innerId] : null;
-                },
-                explode("/", $breadcrumb[$id])
-            )));
-        }
-        return $breadcrumb;
-    }
+
 }

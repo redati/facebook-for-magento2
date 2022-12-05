@@ -4,8 +4,7 @@
  */
 namespace Facebook\BusinessExtension\Setup;
 
-use Facebook\BusinessExtension\Model\Config\ProductAttributes;
-use Facebook\BusinessExtension\Model\Config\Source\Product\GoogleProductCategory;
+
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Attribute;
@@ -17,29 +16,8 @@ use Magento\Framework\Setup\UninstallInterface;
 
 class Uninstall implements UninstallInterface
 {
-    /**
-     * EAV setup factory
-     *
-     * @var EavSetupFactory
-     */
-    private $eavSetupFactory;
 
-    /**
-     * @var ProductAttributes
-     */
-    private $productAttributes;
 
-    /**
-     * Uninstall constructor
-     *
-     * @param EavSetupFactory $eavSetupFactory
-     * @param ProductAttributes $productAttributes
-     */
-    public function __construct(EavSetupFactory $eavSetupFactory, ProductAttributes $productAttributes)
-    {
-        $this->eavSetupFactory = $eavSetupFactory;
-        $this->productAttributes = $productAttributes;
-    }
 
     /**
      * @param SchemaSetupInterface $setup
