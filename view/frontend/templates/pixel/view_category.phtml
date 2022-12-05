@@ -2,7 +2,7 @@
 /** @var \Facebook\BusinessExtension\Block\Pixel\ViewCategory $block */
 if ($block->getFacebookPixelID()) {
     $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
-    $block->trackServerEvent($eventId);
+    //$block->trackServerEvent($eventId); não funciona para varnish
     ?>
     <script>
         fbq('set', 'agent', '<?= $block->getFacebookAgentVersion() ?>', '<?= $block->getFacebookPixelID() ?>');
@@ -18,5 +18,5 @@ if ($block->getFacebookPixelID()) {
             }
         );
     </script>
-    <?php $block->logEvent($block->getFacebookPixelID(), 'ViewCategory') ?>
+
 <?php } ?>
