@@ -5,6 +5,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Facebook_BusinessExtension',
+    'Redati_BusinessExtension',
     __DIR__
 );

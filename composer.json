@@ -10,13 +10,13 @@
   "repositories": [
     {
       "type": "github",
-      "url": "https://github.com/facebookincubator/facebook-for-magento2"
+      "url": "https://github.com/redati/facebook-for-magento2"
     }
   ],
   "autoload": {
     "files": [ "registration.php" ],
     "psr-4": {
-      "Facebook\\BusinessExtension\\": ""
+      "Redati\\BusinessExtension\\": ""
     }
   }
 }
